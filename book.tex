@@ -1,0 +1,72 @@
+\documentclass{book}
+\setcounter{tocdepth}{2}
+\setcounter{secnumdepth}{3}
+\title{Consumer-Centric API Design}
+\author{Thomas Hunter II}
+\date{January 2014}
+\usepackage[pdftex,
+            pdfauthor={Thomas Hunter II},
+            pdftitle={Consumer-Centric API Design},
+            pdfsubject={Creating consumer-friendly HTTP APIs.},
+            pdfkeywords={HTTP, API, REST, RESTful, OAuth},
+            pdfproducer={Latex},
+            pdfcreator={pdflatex},
+            hidelinks]{hyperref}
+\usepackage{graphicx}
+\usepackage{epstopdf}
+\usepackage{lib/wallpaper}
+\usepackage[margin=1in, paperwidth=6in, paperheight=9in]{geometry}
+\usepackage[utf8]{inputenc}
+\renewcommand\bibname{References}
+
+% Shrinks the size of VERBATIM text
+% http://tex.stackexchange.com/a/133442/44007
+\makeatletter
+\def\verbatim{\small\@verbatim \frenchspacing\@vobeyspaces \@xverbatim}
+\makeatother
+
+% Shrinks the top margin of the CONTENTS page
+% http://tex.stackexchange.com/a/62126/44007
+\usepackage{etoolbox}
+\makeatletter
+\let\oldtableofcontents\tableofcontents
+\renewcommand{\tableofcontents}{\begingroup%
+  \patchcmd{\@makeschapterhead}% <cmd>
+    {\vspace*{50\p@}}% <search>
+    {}% <replace>
+    {}{}% <success><failure>
+  \oldtableofcontents%
+  \endgroup%
+}
+\makeatother
+
+% Allow linebreaks within TEXTTT blocks
+% http://tex.stackexchange.com/a/219497/44007
+\renewcommand{\texttt}[1]{%
+  \begingroup
+  \ttfamily
+  \begingroup\lccode`~=`/\lowercase{\endgroup\def~}{/\discretionary{}{}{}}%
+  \begingroup\lccode`~=`[\lowercase{\endgroup\def~}{[\discretionary{}{}{}}%
+  \begingroup\lccode`~=`=\lowercase{\endgroup\def~}{=\discretionary{}{}{}}%
+  \begingroup\lccode`~=`\{\lowercase{\endgroup\def~}{\{\discretionary{}{}{}}%
+  \begingroup\lccode`~=`.\lowercase{\endgroup\def~}{.\discretionary{}{}{}}%
+  \catcode`/=\active\catcode`[=\active\catcode`.=\active
+  \scantokens{#1\noexpand}%
+  \endgroup
+}
+
+\begin{document}
+
+\input{content/cover.tex}
+\input{content/people.tex}
+\input{content/intro.tex}
+\input{content/toc.tex}
+\input{content/ch1-basics.tex}
+\input{content/ch2-requests.tex}
+\input{content/ch3-responses.tex}
+\input{content/ch4-ecosystem.tex}
+\input{content/ch5-standards.tex}
+\input{content/bibliography.tex}
+\input{content/cover-rear.tex}
+
+\end{document}

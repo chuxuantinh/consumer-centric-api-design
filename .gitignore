@@ -1,0 +1,19 @@
+# Typical LaTeX documents
+book.aux
+book.bbl
+book.blg
+book.log
+book.out
+book.toc
+
+# Temporary PDF files converted from EPS during build
+/*.pdf
+
+# Dia temporary files
+*.dia.autosave
+
+# Companion project (incomplete)
+project/
+
+# Sometimes this appears when I horribly break LaTeX
+texput.log
